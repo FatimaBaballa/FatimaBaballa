@@ -1,0 +1,9 @@
+import unittest
+
+from translator import englishtofrench
+
+class TestTranslation(unittest.TestCase): 
+    def test1(self): 
+        self.assertEqual(englishtofrench("hello"), "bonjour") 
+
+unittest.main()
