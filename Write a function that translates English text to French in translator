@@ -17,3 +17,25 @@ def englishtofrench (translation_eng):
         text=translation_eng , model_id='en-fr').get_result()
 
     return French_translation['translations'][0]['translation']
+
+-----
+
+import json
+from ibm_watson import LanguageTranslatorV3
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+authenticator = IAMAuthenticator('pQaUoRpx_-GKOXAee5vFRFZ4fsBqeCX2x_z5wC-A0hRQ')
+language_translator = LanguageTranslatorV3(
+    version='2018-05-01',
+    authenticator=authenticator
+)
+
+language_translator.set_service_url('https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/978de3a7-2a3a-481c-8a84-072967d8c516')
+
+
+def englishtofrench(text):
+    French_translation=language_translator.translate(
+        text=text , model_id='en-fr').get_result()    
+    print("hello")
+
+    return French_translation['translations'][0]['translation']
